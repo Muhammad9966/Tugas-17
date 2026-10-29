@@ -2,8 +2,8 @@ import Link from "next/link";
 import { getProducts } from "@/lib/products";
 import BuildInfo from "@/components/BuildInfo";
 
-// TODO (Tahap 3, Langkah 13): tulis export const revalidate = ... di sini (lihat JOBSHEET.md)
-
+  // TODO (Tahap 3, Langkah 13): tulis export const revalidate = ... di sini (lihat JOBSHEET.md)
+  export const revalidate = 10;
 export default async function ProdukPage() {
   const products = await getProducts();
 

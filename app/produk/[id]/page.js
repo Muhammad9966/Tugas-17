@@ -1,9 +1,14 @@
 import { notFound } from "next/navigation";
 import { getProductById } from "@/lib/products";
 import BuildInfo from "@/components/BuildInfo";
-// TODO (Langkah 24): import + revalidate, lihat JOBSHEET.md
+import { getProducts } from "@/lib/products";
+ 
+export const revalidate = 10;
 
-// TODO (Langkah 25): tulis generateStaticParams, lihat JOBSHEET.md
+export async function generateStaticParams() {
+  const products = await getProducts();                  // ambil SEMUA produk
+  return products.map((p) => ({ id: p.id.toString() }));   // id harus berupa TEKS (string)
+}
 
 export default async function DetailProduk({ params }) {
   const { id } = await params;
